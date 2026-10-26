@@ -1,0 +1,35 @@
+{
+  "task": "masked-edge reconstruction within each time step",
+  "split": "train 1-34; validation 35-40; test 41-49",
+  "seed": 42,
+  "holdout_fraction": 0.2,
+  "features": [
+    "common_neighbors",
+    "jaccard",
+    "adamic_adar",
+    "degree_product"
+  ],
+  "samples": {
+    "train": 62740,
+    "validation": 11708,
+    "test": 19300
+  },
+  "snapshots_used": 49,
+  "snapshots_skipped": 0,
+  "validation": {
+    "logistic_regression": {
+      "roc_auc": 0.4095,
+      "average_precision": 0.5799
+    },
+    "random_forest": {
+      "roc_auc": 0.7897,
+      "average_precision": 0.7564
+    }
+  },
+  "selected_model": "random_forest",
+  "test": {
+    "roc_auc": 0.7741,
+    "average_precision": 0.7446
+  },
+  "note": "Negative pairs are sampled to match hidden edges; scores are not calibrated to real-world edge prevalence."
+}
